@@ -2,7 +2,7 @@
 #include	<avr\io.h>		// AVR Register und Konstantendefinitionen
 
 /*Custom Includes and defines*/
-
+#include "Grundgerüst.h"
 #include <util/delay.h>		//delay-Methode
 #define	STARTZEIT_ANZEIGE 1050
 #define	LEDZEIT	1000000 			//ein halbes Bit lang leuchtet die IR_DIODE in microseconds --> _delay_us()
