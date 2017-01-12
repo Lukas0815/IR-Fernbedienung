@@ -2,6 +2,7 @@ void initAD();
 void setup();
 int measure();
 bool checkAddress();
-void getCommand();
+bool getCommand();
 void showCommandOnDisplay();
 int getBit();
+void segmentanzeige(int x);
