@@ -5,7 +5,7 @@
 //custom includes
 #include "Empfänger.h"
 #include <util/delay.h>		//delay-Methode
-#define	LEDZEIT	889			//halbes Bit --> Muss mit Sender übereinstimmen!!!!
+#define	LEDZEIT	1000			//halbes Bit --> Muss mit Sender übereinstimmen!!!!
 
 // Custom variables 
 int displayZahl[10]={
@@ -107,12 +107,12 @@ bool getCommand()
 		{
 			command[i] = getBit();
 		}
-		else
+	else
 		{
 			return false;
 		}
 	}
-	
+
 	return true;
 }
 
@@ -141,7 +141,7 @@ void showCommandOnDisplay()
 					j=3;
 				}
 			}
-			else
+		else
 			{
 				//Stimmt der Command an einer Stelle nicht mit dem aktuellen Taster überein dann springe
 				//zum nächsten Taster
@@ -152,9 +152,19 @@ void showCommandOnDisplay()
 	}
 
 	//Zahl Taster auf Display anzeigen
-	if(isTastercommandVorhanden){
+	if(isTastercommandVorhanden)
+	{
 		segmentanzeige(Taster);
-	}else{
+		
+		PORTB = 0b000000;
+		_delay_ms(1000);
+		PORTB = 0b000010;
+		_delay_ms(1000);
+		PORTB = 0b000000;
+		_delay_ms(1000);
+	}
+else
+	{
 		segmentanzeige(404);
 	}
 }
@@ -206,40 +216,40 @@ else if(messwert > vergleichsspannung)
 	}
 }
 
-void segmentanzeige(int x){
-	
+void segmentanzeige(int x)
+{
+
 	switch (x)
 	{
 		case 0:
-			PORTD = 0b00111111;
-			break;
+		PORTD = 0b00111111;
+		break;
 		case 1:
-			PORTD = 0b00000110;
-			break;
+		PORTD = 0b00000110;
+		break;
 		case 2:
-			PORTD = 0b01011011;
-			break;
+		PORTD = 0b01011011;
+		break;
 		case 3:
-			PORTD = 0b01001111;
-			break;
+		PORTD = 0b01001111;
+		break;
 		case 4:
-			PORTD = 0b01100110;
-			break;
+		PORTD = 0b01100110;
+		break;
 		case 5:
-			PORTD = 0b01101101;
-			break;
+		PORTD = 0b01101101;
+		break;
 		case 6:
-			PORTD = 0b01111101;
-			break;
+		PORTD = 0b01111101;
+		break;
 		case 404:
-			PORTD = 0b01110001;
-			break;
+		PORTD = 0b01110001;
+		break;
 		default:
-			PORTD = 0b01000000;
-			break;
+		PORTD = 0b01000000;
+		break;
 	}
 }
-
 
 main ()						
 {
@@ -268,7 +278,7 @@ main ()
 					{
 						getCommand();
 						showCommandOnDisplay();
-						
+
 					}
 
 				}
@@ -286,7 +296,7 @@ main ()
 	}
 
 	*/
-	
+
 	}
 	while (true);			
 }

@@ -5,7 +5,7 @@
 #include "Grundgerüst.h"
 #include <util/delay.h>		//delay-Methode
 #define	STARTZEIT_ANZEIGE 1050
-#define	LEDZEIT	1000000 			//ein halbes Bit lang leuchtet die IR_DIODE in microseconds --> _delay_us()
+#define	LEDZEIT	1000 			//ein halbes Bit lang leuchtet die IR_DIODE in microseconds --> _delay_us()
 #define ZEITNACHSIGNAL	30		//in ms
 
 const int geraeteadresse[3] = {0,0,1};
